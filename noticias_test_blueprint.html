@@ -392,113 +392,7 @@
     <div class="news-list" id="news-view">
       <!-- LIST will live here for now -->
 
-<article class="news-item">
-        <span class="news-date">2 Octobris 2025</span>
-        <h2>Machinae generativae nunc adsunt!</h2>
-        <p>
-          Hodie annuntiatur progressus novorum modorum artificialium. Systemata generativa...
-        </p>
-        <a href="#">Leer más</a>
-      </article>
 
-      <article class="news-item">
-        <span class="news-date">28 Augusti 2025</span>
-        <h2>Editio specialis de intelligentia artificiosa</h2>
-        <p>
-          Occasione anniversarii evolutionis technologicae celebramus mutationes digitales... Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt tempora quas excepturi repudiandae. Officiis earum, dolorem tenetur natus culpa ab itaque quidem aliquid fuga est nam exercitationem saepe ullam magnam.
-        </p>
-        <a href="#">Leer más</a>
-      </article>
-
-      <article class="news-item">
-        <span class="news-date">9 Iunii 2025</span>
-        <h2>Secunda aetas systematum intelligentium appropinquat!</h2>
-        <p>
-          Bona nuntia. Tempus activationis pro novo instrumento cognitivi confirmatum est...
-        </p>
-        <a href="#">Leer más</a>
-      </article>
-
-      <article class="news-item">
-        <span class="news-date">2 Octobris 2025</span>
-        <h2>Machinae generativae nunc adsunt!</h2>
-        <p>
-          Hodie annuntiatur progressus novorum modorum artificialium. Systemata generativa...
-        </p>
-        <a href="#">Leer más</a>
-      </article>
-
-      <article class="news-item">
-        <span class="news-date">28 Augusti 2025</span>
-        <h2>Editio specialis de intelligentia artificiosa</h2>
-        <p>
-          Occasione anniversarii evolutionis technologicae celebramus mutationes digitales...
-        </p>
-        <a href="#">Leer más</a>
-      </article>
-
-      <article class="news-item">
-        <span class="news-date">9 Iunii 2025</span>
-        <h2>Secunda aetas systematum intelligentium appropinquat!</h2>
-        <p>
-          Bona nuntia. Tempus activationis pro novo instrumento cognitivi confirmatum est...
-        </p>
-        <a href="#">Leer más</a>
-      </article>
-
-      <article class="news-item">
-        <span class="news-date">2 Octobris 2025</span>
-        <h2>Machinae generativae nunc adsunt!</h2>
-        <p>
-          Hodie annuntiatur progressus novorum modorum artificialium. Systemata generativa...
-        </p>
-        <a href="#">Leer más</a>
-      </article>
-
-      <article class="news-item">
-        <span class="news-date">28 Augusti 2025</span>
-        <h2>Editio specialis de intelligentia artificiosa</h2>
-        <p>
-          Occasione anniversarii evolutionis technologicae celebramus mutationes digitales...
-        </p>
-        <a href="#">Leer más</a>
-      </article>
-
-      <article class="news-item">
-        <span class="news-date">9 Iunii 2025</span>
-        <h2>Secunda aetas systematum intelligentium appropinquat!</h2>
-        <p>
-          Bona nuntia. Tempus activationis pro novo instrumento cognitivi confirmatum est...
-        </p>
-        <a href="#">Leer más</a>
-      </article>
-
-      <article class="news-item">
-        <span class="news-date">2 Octobris 2025</span>
-        <h2>Machinae generativae nunc adsunt!</h2>
-        <p>
-          Hodie annuntiatur progressus novorum modorum artificialium. Systemata generativa...
-        </p>
-        <a href="#">Leer más</a>
-      </article>
-
-      <article class="news-item">
-        <span class="news-date">28 Augusti 2025</span>
-        <h2>Editio specialis de intelligentia artificiosa</h2>
-        <p>
-          Occasione anniversarii evolutionis technologicae celebramus mutationes digitales...
-        </p>
-        <a href="#">Leer más</a>
-      </article>
-
-      <article class="news-item">
-        <span class="news-date">9 Iunii 2025</span>
-        <h2>Secunda aetas systematum intelligentium appropinquat!</h2>
-        <p>
-          Bona nuntia. Tempus activationis pro novo instrumento cognitivi confirmatum est...
-        </p>
-        <a href="#">Leer más</a>
-      </article>
 
 
 
@@ -617,26 +511,80 @@
 </div>
 
 
+  <script>
+const NEWS_DATA = [
+  {
+    id: "noticia-01-1",
+    date: "2 Octobris 2025",
+    title: "Machinae generativae nunc adsunt!",
+    excerpt: "Hodie annuntiatur progressus novorum modorum artificialium...",
+    image: "news_full_placeholder.jpg",
+    body: [
+      "Hodie annuntiatur progressus novorum modorum artificialium.",
+      "Systemata generativa iam in vita cotidiana adhibentur.",
+      "Haec mutatio novam aetatem cognitionis aperit."
+    ]
+  },
+  {
+    id: "noticia-02",
+    date: "28 Augusti 2025",
+    title: "Editio specialis de intelligentia artificiosa",
+    excerpt: "Occasione anniversarii evolutionis technologicae celebramus...",
+    image: "news_full_placeholder.jpg",
+    body: [
+      "Occasione anniversarii evolutionis technologicae celebramus mutationes digitales.",
+      "Intelligentia artificiosa novas formas creationis aperit."
+    ]
+  }
+];
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const listSection = document.getElementById("news-app");
+  const wholeSection = document.getElementById("whole-news");
+  const newsView = document.getElementById("news-view");
+
+  newsView.addEventListener("click", e => {
+    const link = e.target.closest("a[data-id]");
+    if (!link) return;
+
+    e.preventDefault();
+
+    const id = link.dataset.id;
+    const data = NEWS_DATA.find(item => item.id === id);
+    if (!data) return;
+
+    wholeSection.querySelector(".news-date").textContent = data.date;
+    wholeSection.querySelector(".whole-news-title").textContent = data.title;
+    wholeSection.querySelector(".whole-news-media img").src = data.image;
+
+    const body = wholeSection.querySelector(".whole-news-body");
+    body.innerHTML = "";
+    data.body.forEach(p => body.innerHTML += `<p>${p}</p>`);
+
+    listSection.hidden = true;
+    wholeSection.hidden = false;
+
+    window.scrollTo({ top: 0 });
+  });
+});
+</script>
+
+
 <script>
 function toggleMenu() {
-  const menu = document.getElementById('mobileMenu');
-  menu.classList.toggle('active');
+  document.getElementById("mobileMenu").classList.toggle("active");
 }
 
+const logo = document.querySelector(".logo");
+window.addEventListener("scroll", () => {
+  logo.classList.toggle("shrink", window.scrollY > 80);
+});
 
-  const logo = document.querySelector('.logo');
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) {
-      logo.classList.add('shrink');
-    } else {
-      logo.classList.remove('shrink');
-    }
-  });
-
-// SHARE-STRIP
-
- document.addEventListener("DOMContentLoaded", function () {
+// SHARE STRIP
+document.addEventListener("DOMContentLoaded", () => {
   const url = encodeURIComponent(window.location.href);
 
   const fb = document.getElementById("share-facebook");
@@ -647,13 +595,12 @@ function toggleMenu() {
   }
 
   if (email) {
-    email.href = `mailto:?subject=Te%20comparto%20esta%20página&body=Te%20comparto%20este%20enlace:%0A${url}`;
-
+    email.href =
+      "mailto:?subject=Te%20comparto%20esta%20página&body=Te%20comparto%20este%20enlace:%0A" +
+      url;
   }
 });
-
 </script>
-
 
 </body>
 </html>
