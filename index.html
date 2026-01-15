@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Home</title>
+
+<!-- added fonts from google -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+ 
+<style>
+
+/* =========================
+   CAROUSEL AREA (PLACEHOLDER)
+========================= */
+.carousel-area {
+  background: var(--white);
+  width: 100%;
+  /* aspect-ratio: 100%/ 100%; */
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+
+.carousel-area .inner {
+  max-width: none;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.carousel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 60px rgba(0,0,0,0.15);
+  pointer-events: none;
+}
+
+/* =========================
+   FIXED-RATIO SLIDESHOW
+========================= */
+
+.carousel {
+  position: relative;
+  width: 100%;
+  /* max-width: 1200px; */
+  aspect-ratio: 16 / 4.5;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel .slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: fade 24s infinite; /* infinite loop */
+}
+
+.carousel .slide.one   { animation-delay: 0s; }
+.carousel .slide.two   { animation-delay: 4s; }
+.carousel .slide.three { animation-delay: 8s; }
+.carousel .slide.four  { animation-delay: 12s; }
+.carousel .slide.five  { animation-delay: 16s;}
+.carousel .slide.six  { animation-delay: 20s;}
+
+@keyframes fade {
+  10%, 10% { opacity: 1; }  /* visible for 20% of the cycle */
+  25%, 50% { opacity: 0; } /* then fade out */
+}
+
+/* ≤980px */
+@media (max-width: 980px) {
+  .carousel-area {
+    margin: 0 0 30px 0;
+  }
+}
+
+/* ≤770px */
+@media (max-width: 770px) {
+  .carousel-area {
+    margin: 0 0 20px 0;
+  }
+}
+
+/* =========================
+   H2 INDEX (NEWS SECTION)
+========================= */
+.h2-index {
+  background: #f4f1ef;
+  width: 100%;
+  padding: 30px 70px 40px 70px;
+}
+
+.h2-index .inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.h2-index-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.h2-index-header h2 {
+  color: var(--green);
+  font-size: 33px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.h2-index-header p {
+  font-size: 24px;
+  color: var(--black);
+}
+
+.h2-index-columns {
+  display: flex;
+  gap: 24px;
+}
+
+.h2-index-item {
+  flex: 1;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.h2-index-item .date {
+  font-size: 20px;
+  color: var(--black);
+  margin-bottom: 6px;
+}
+
+.h2-index-item h3 {
+  font-size: 18px;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+
+.h2-index-item p {
+  margin-bottom: 10px;
+}
+
+.h2-index-item a {
+  color: var(--green);
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ≤770px → stack columns */
+@media (max-width: 770px) {
+  .h2-index-columns {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+/* =========================
+   H1 INDEX (WELCOME SECTION)
+========================= */
+.h1-index {
+  background: var(--white);
+  padding: 35px 15px 32px;
+}
+
+.h1-index .inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.h1-index h1 {
+  color: var(--green);
+  font-size: 33px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.h1-index .subtitle {
+  font-size: 27px;
+  margin-bottom: 25px;
+}
+
+.h1-index p {
+  font-size: 20px;
+  line-height: 1.6;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/* =========================
+   COOKIE BANNER
+========================= */
+
+.cookie-overlay {
+  position: fixed;
+  inset: auto;
+  left: 40px;
+  bottom: 40px;
+  background: none;
+  backdrop-filter: blur(4px);
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 6000;
+}
+
+.cookie-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cookie-modal {
+  background: var(--green);
+  width: 90%;
+  max-width: 480px;
+  padding: 30px;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+  text-align: center;
+  opacity: 0.9;
+  border: solid 1px var(--black);
+}
+
+.cookie-overlay.active .cookie-modal {
+  transform: translateY(0);
+}
+
+.cookie-modal h2 {
+  font-size: 22px;
+  color: var(--black);
+  margin-bottom: 15px;
+}
+
+.cookie-modal p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--black);
+}
+
+.cookie-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.cookie-actions button {
+  padding: 10px 22px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border: none;
+}
+
+.cookie-reject {
+  background: var(--yellow);
+  color: var(--black);
+  opacity: 0.8;
+  font-weight: 700;
+  transform: scale(0.95);
+}
+
+.cookie-accept {
+  background: var(--black);
+  color: var(--white);
+  font-weight: 700;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sticky-header">
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="inner">
+    
+
+    <div class="language">EN | ES</div>
+
+    <form class="search-form">
+      <input type="text" placeholder="Buscar">
+      <button type="submit">
+        <svg viewBox="0 0 24 24">
+          <circle cx="10" cy="10" r="7" stroke="#fff" stroke-width="2" fill="none"/>
+          <line x1="15" y1="15" x2="22" y2="22" stroke="#fff" stroke-width="2"/>
+        </svg>
+      </button>
+    </form>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</div>
+
+<!-- GREEN HEADER -->
+<div class="header-main">
+  <div class="inner">
+    <div class="logo">
+      <a href="index.html"><img src="/home/computer/Desktop/Pprincipitoo/pprincipitoo_web/resources_web_raw/Images/Logos/logo_&_letters.png" alt="Logo"></a>
+<!-- <span><a href="index_pprincipitoo.html"><img src="/home/computer/Desktop/Pprincipitoo/pprincipitoo_web/resources_web_raw/Images/Logos/text_logo.png" alt=""></a></span> -->
+    </div>
+
+ <div class="social-icons">
+  <a href="https://www.instagram.com/pprincipitoo?igsh=eHc1NmU0eHhsbmR5&utm_source=qr" aria-label="Instagram">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/instagram.svg" alt="Instagram">
+  </a>
+  <a href="https://www.facebook.com/share/1AkRGWcoSZ/?mibextid=wwXIfr" aria-label="Facebook">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/facebook.svg" alt="Facebook">
+  </a>
+  <a href="https://www.youtube.com/@ppprincipitooo" aria-label="YouTube">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/youtube.svg" alt="YouTube">
+  </a>
+  <a href="https://www.tiktok.com/@pprincipitoo?_r=1&_t=ZN-92xYNx1zp38" aria-label="TikTok">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/tiktok.svg" alt="TikTok">
+  </a>
+</div>
+
+
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="inner">
+    <a href="index.html">INICIO</a>
+    <a href="biografía.html">BIOGRAFÍA</a>
+    <a href="noticias.html">NOTICIAS</a>
+    <!-- <a href="#">PRÓXIMAMENTE</a> -->
+    <a href="libros.html">LIBROS</a>
+    <!-- <a href="#">PROYECTOS</a> -->
+    <!-- <a href="#">LECTURAS</a> -->
+    <a href="preguntas.html">PREGUNTAS</a>
+    <!-- <a href="#">REDES SOCIALES</a> -->
+    <a href="contacto.html">CONTACTO</a>
+  </div>
+</nav>
+
+
+</div>
+
+<!-- UNDER NAV -->
+<!-- <div class="under-nav">
+  <div class="inner">
+    <div class="text"> -->
+      <!-- <h1>Home</h1>
+      <p>Página oficial</p> -->
+    <!-- </div>
+
+    <div class="art">
+      <img src="web-assets/pprincipitoo_logo_alpha.png" alt="Decorative element">
+    </div>
+  </div>
+</div> -->
+
+<!-- CAROUSEL AREA -->
+<section class="carousel-area">
+  <div class="inner">
+    <div class="carousel">
+  <img src="web-assets/Sahara_10_fire.webp" class="slide one" />
+  <img src="web-assets/Sahara_11_face.webp" class="slide two" />
+  <img src="web-assets/Sahara_12_rock.webp" class="slide three" />
+  <img src="web-assets/Sahara_13_desert.webp" class="slide four" />
+  <img src="web-assets/Sahara_14_logo.webp" class="slide five" />
+  <img src="web-assets/Sahara_15_logo_metal.webp" class="slide six" />
+  </a>
+</div>
+
+  </div>
+</section>
+
+<!-- H2 INDEX -->
+<section class="h2-index">
+  <div class="inner">
+
+    <div class="h2-index-header">
+      <h2>ÚLTIMAS NOTICIAS</h2>
+      <p>¡ Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, ab. Ullam animi quo mollitia!</p>
+    </div>
+
+    <div class="h2-index-columns">
+
+      <div class="h2-index-item">
+        <div class="date">02 octubre 2025</div>
+        <h3>¡encabezado!</h3>
+        <p>
+          ¡ Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias hic quibusdam dolore voluptate numquam optio suscipit placeat excepturi. Ducimus, eaque facilis. Ducimus rem quod iure earum deleniti vero ullam ut...
+        </p>
+        <a href="#">Leer más</a>
+      </div>
+
+      <div class="h2-index-item">
+        <div class="date">28 agosto 2025</div>
+        <h3>Edición especial de «Jaima del Alma»</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. A voluptates necessitat...
+        </p>
+        <a href="#">Leer más</a>
+      </div>
+
+      <div class="h2-index-item">
+        <div class="date">09 junio 2025</div>
+        <h3>¡Encabezado!</h3>
+        <p>
+          ¡Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, expedita consectetur...
+        </p>
+        <a href="#">Leer más</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- H1 INDEX -->
+<section class="h1-index">
+  <div class="inner">
+    <h1>PÁGINA OFICIAL DE RUBÉN FIGUERAS</h1>
+    <div class="subtitle">¡Bienvenidos!</div>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae voluptate quae exercitationem optio. Animi non quasi delectus eos doloribus, error beatae quaerat autem inventore voluptates, modi facilis rem sequi eligendi!
+    </p>
+  </div>
+</section>
+
+
+<!-- BOX ELEMENT -->
+<section class="box-element">
+  <div class="inner">
+
+    <div class="box-item">
+      <h3>BIOGRAFÍA</h3>
+      <a href="biografía.html">
+        <div class="media">
+          <img src="/home/computer/Desktop/Pprincipitoo/pprincipitoo_web/Web/web-assets/bio_box_element.png" alt="Biografía">
+        </div>
+        <p>¿Quieres saber algo más sobre mí?</p>
+      </a>
+    </div>
+
+  <div class="box-item">
+      <h3>NOTICIAS</h3>
+      <a href="noticias.html">
+        <div class="media">
+          <img src="/home/computer/Desktop/Pprincipitoo/pprincipitoo_web/Web/web-assets/news_box_element.png" alt="Redes sociales">
+        </div>
+        <p>¡Entérate de las noticias!</p>
+      </a>
+    </div>
+
+
+    <div class="box-item">
+      <h3>LIBROS</h3>
+      <a href="libros.html">
+        <div class="media">
+          <img src="/home/computer/Desktop/Pprincipitoo/pprincipitoo_web/Web/web-assets/books_box_element.png" alt="Libros">
+        </div>
+        <p>Todas las obras publicadas hasta hoy</p>
+      </a>
+    </div>
+
+    <div class="box-item">
+      <h3>CONTACTO</h3>
+      <a href="contacto.html">
+        <div class="media">
+          <img src="/home/computer/Desktop/Pprincipitoo/pprincipitoo_web/Web/web-assets/contact_box_element.png" alt="Contacto">
+        </div>
+        <p>¿Tienes algo que contarme? ¡Escríbeme!</p>
+      </a>
+    </div>
+
+  </div>
+</section>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="inner">
+    <div>
+      © 2025 ARTIST'S NAME —
+      <a href="#">Aviso Legal</a> |
+      <a href="#">Política de Privacidad</a> |
+      <a href="#">Política de Cookies</a> |
+      <a href="#">Configurar Cookies</a>
+    </div>
+
+    <div class="brand">
+      Visual Gen
+    </div>
+  </div>
+</footer>
+
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Inicio</a>
+  <a href="biografía.html">Biografía</a>
+  <a href="noticias.html">Noticias</a>
+  <a href="libros.html">Libros</a>
+  <a href="preguntas.html">Preguntas frecuentes</a>
+  <a href="contacto.html">Contacto</a>
+</div>
+
+
+
+
+
+<!-- COOKIE BANNER -->
+<div class="cookie-overlay" id="cookieOverlay">
+  <div class="cookie-modal">
+    <h2>Cookies</h2>
+    <p>
+      Usamos cookies de analítica para entender cómo se usa la web.
+      Puedes aceptarlas o rechazarlas.
+    </p>
+
+    <div class="cookie-actions">
+      <button class="cookie-accept" id="cookieAccept">Aceptar</button>
+      <button class="cookie-reject" id="cookieReject">Rechazar</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('active');
+}
+
+ const logo = document.querySelector('.logo');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      logo.classList.add('shrink');
+    } else {
+      logo.classList.remove('shrink');
+    }
+  });
+
+
+// COOKIES
+
+(function () {
+  const overlay = document.getElementById('cookieOverlay');
+  const acceptBtn = document.getElementById('cookieAccept');
+  const rejectBtn = document.getElementById('cookieReject');
+
+  function setCookie(name, value, days) {
+    const d = new Date();
+    d.setTime(d.getTime() + (days*24*60*60*1000));
+    document.cookie = `${name}=${value}; expires=${d.toUTCString()}; path=/`;
+  }
+
+  function getCookie(name) {
+    return document.cookie
+      .split('; ')
+      .find(row => row.startsWith(name + '='))
+      ?.split('=')[1];
+  }
+
+  function analyticsAllowed() {
+    return getCookie('analytics_consent') === 'granted';
+  }
+
+  // SHOW BANNER IF NO CHOICE
+  if (!getCookie('analytics_consent')) {
+    overlay.classList.add('active');
+  } else if (analyticsAllowed()) {
+    loadAnalytics(); // future GA hook
+  }
+
+  acceptBtn.addEventListener('click', () => {
+    setCookie('analytics_consent', 'granted', 365);
+    overlay.classList.remove('active');
+    loadAnalytics();
+  });
+
+  rejectBtn.addEventListener('click', () => {
+    setCookie('analytics_consent', 'denied', 365);
+    overlay.classList.remove('active');
+  });
+
+  // PLACEHOLDER — GA GOES HERE LATER
+  function loadAnalytics() {
+    // Google Analytics script will be inserted here later
+    console.log('Analytics allowed');
+  }
+})();
+
+</script>
+
+
+</body>
+</html>

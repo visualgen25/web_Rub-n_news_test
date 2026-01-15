@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Preguntas y Respuestas</title>
+
+
+<!-- added fonts from google -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* =========================
+   FAQ ACCORDION STYLING   
+========================= */
+
+.faq-section {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 30px 15px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.faq-title {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--green);
+}
+
+.faq-item {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--black);
+  padding: 10px 0;
+}
+
+.faq-question .icon {
+  transition: transform 0.3s ease;
+  font-weight: bold;
+  font-size: 28px;
+  color: var(--green);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0;
+}
+
+.faq-answer p {
+  margin: 10px 0;
+  color: var(--black);
+}
+
+.faq-item.active .faq-answer {
+  max-height: 200px;
+  padding: 10px 0;
+}
+
+.faq-item.active .faq-question .icon {
+  transform: rotate(180deg);
+}
+
+</style> 
+</head>
+
+<body>
+
+<div class="sticky-header">
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="inner">
+    
+
+    <div class="language">EN | ES</div>
+
+    <form class="search-form">
+      <input type="text" placeholder="Buscar">
+      <button type="submit">
+        <svg viewBox="0 0 24 24">
+          <circle cx="10" cy="10" r="7" stroke="#fff" stroke-width="2" fill="none"/>
+          <line x1="15" y1="15" x2="22" y2="22" stroke="#fff" stroke-width="2"/>
+        </svg>
+      </button>
+    </form>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</div>
+
+<!-- GREEN HEADER -->
+<div class="header-main">
+  <div class="inner">
+    <div class="logo">
+      <a href="index.html"><img src="/home/computer/Desktop/Pprincipitoo/pprincipitoo_web/resources_web_raw/Images/Logos/logo_&_letters.png" alt="Logo"></a>
+<!-- <span><a href="index_pprincipitoo.html"><img src="/home/computer/Desktop/Pprincipitoo/pprincipitoo_web/resources_web_raw/Images/Logos/text_logo.png" alt=""></a></span> -->
+    </div>
+
+  <div class="social-icons">
+  <a href="https://www.instagram.com/pprincipitoo?igsh=eHc1NmU0eHhsbmR5&utm_source=qr" aria-label="Instagram">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/instagram.svg" alt="Instagram">
+  </a>
+  <a href="https://www.facebook.com/share/1AkRGWcoSZ/?mibextid=wwXIfr" aria-label="Facebook">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/facebook.svg" alt="Facebook">
+  </a>
+  <a href="https://www.youtube.com/@ppprincipitooo" aria-label="YouTube">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/youtube.svg" alt="YouTube">
+  </a>
+  <a href="https://www.tiktok.com/@pprincipitoo?_r=1&_t=ZN-92xYNx1zp38" aria-label="TikTok">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/tiktok.svg" alt="TikTok">
+  </a>
+</div>
+
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="inner">
+    <a href="index.html">INICIO</a>
+    <a href="biografía.html">BIOGRAFÍA</a>
+    <a href="noticias.html">NOTICIAS</a>
+    <!-- <a href="#">PRÓXIMAMENTE</a> -->
+    <a href="libros.html">LIBROS</a>
+    <!-- <a href="#">PROYECTOS</a> -->
+    <!-- <a href="#">LECTURAS</a> -->
+    <a href="preguntas.html">PREGUNTAS</a>
+    <!-- <a href="#">REDES SOCIALES</a> -->
+    <a href="contacto.html">CONTACTO</a>
+  </div>
+</nav>
+
+
+<!-- UNDER NAV -->
+<div class="under-nav">
+  <div class="inner">
+    <div class="text">
+      <h1>Preguntas frecuentes</h1>
+      <p>¿Quieres saber mas sobre mi?</p>
+    </div>
+
+    <div class="art">
+      <img src="under_nav_element.png" alt="Decorative element">
+    </div>
+  </div>
+</div>
+
+<!-- STRIP SHARE -->
+<div class="strip-share">
+  <div class="inner">
+
+    <div class="strip-path">
+      <a href="index.html">Inicio</a> / <strong>Preguntas frecuentes</strong>
+    </div>
+
+    <div class="strip-social">
+      <span>¡Comparte esta información!</span>
+
+       <div class="icons strip-social-icons">
+        
+  <!-- Instagram -->
+ <!-- <a href=""> <svg viewBox="0 0 24 24" aria-label="Instagram"> -->
+    <!-- <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 7.4A2.9 2.9 0 1 1 14.9 12 2.9 2.9 0 0 1 12 14.9zM17.2 6.3a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+  </svg></a> -->
+
+  <!-- Facebook -->
+  <a href="#" id="share-facebook" target="_blank" aria-label="Compartir en Facebook"><svg viewBox="0 0 24 24" aria-label="Facebook">
+    <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2V9.5c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 3h-2v7A10 10 0 0 0 22 12z"/>
+  </svg></a>
+
+
+<!-- Email -->
+<a href="#" id="share-email" aria-label="Compartir por email"><svg viewBox="0 0 24 24" aria-label="Email">
+  <path d="M2 6c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6zm2 0 8 5 8-5H4zm16 12V8l-8 5-8-5v10h16z"/>
+</svg></a>
+
+
+
+
+  <!-- YouTube -->
+  <!-- <a href=""><svg viewBox="0 0 24 24" aria-label="YouTube">
+    <path d="M23.5 6.2s-.2-1.6-.9-2.3c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5h0s-5.6 0-8.5.4c-.4.1-1.3.1-2.1 1C.7 4.6.5 6.2.5 6.2S0 8.1 0 10v1.9c0 1.9.5 3.8.5 3.8s.2 1.6.9 2.3c.8.9 1.9.8 2.4.9 1.7.2 7.2.4 7.2.4s5.6 0 8.5-.4c.4-.1 1.3-.1 2.1-1 .7-.7.9-2.3.9-2.3s.5-1.9.5-3.8V10c0-1.9-.5-3.8-.5-3.8zM9.5 14.5v-5l5 2.5-5 2.5z"/>
+  </svg></a> -->
+
+  <!-- TikTok -->
+  <!-- <a href=""><svg viewBox="0 0 24 24" aria-label="TikTok">
+    <path d="M21 8.5a6.5 6.5 0 0 1-3.8-1.2V15a6 6 0 1 1-6-6c.3 0 .6 0 .9.1v3.2a2.9 2.9 0 1 0 2.1 2.8V2h3a6.5 6.5 0 0 0 3.8 3.7v2.8z"/>
+  </svg></a> -->
+
+</div>
+
+
+    </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- FAQ ACCORDION -->
+<section class="faq-section">
+  <h2 class="faq-title">Preguntas Frecuentes</h2>
+  <div class="faq-container">
+    <div class="faq-item">
+      <button class="faq-question">
+        ¿Quién es Rubén Figueras? <span class="icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit quae quam illum vero culpa.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        ¿Puede Rubén hacer una presentación en nuestro centro? <span class="icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Sí, Contactando con mi agente a través de la sección de <a href="contacto.html">contácto</a> se puede cuadrar una presentación</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        ¿Puedo compartir mis ideas? <span class="icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>¡Absolutamente! Puedes compartir tus ideas mediante un e-mail a la dirección que te damos en <a href="contacto.html">contacto</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BOX ELEMENT -->
+<section class="box-element">
+  <div class="inner">
+
+    <div class="box-item">
+      <h3>BIOGRAFÍA</h3>
+      <a href="biografía.html">
+        <div class="media">
+          <img src="/home/computer/Desktop/Pprincipitoo/pprincipitoo_web/Web/web-assets/bio_box_element.png" alt="Biografía">
+        </div>
+        <p>¿Quieres saber algo más sobre mí?</p>
+      </a>
+    </div>
+
+  <div class="box-item">
+      <h3>NOTICIAS</h3>
+      <a href="noticias.html">
+        <div class="media">
+          <img src="/home/computer/Desktop/Pprincipitoo/pprincipitoo_web/Web/web-assets/news_box_element.png" alt="Redes sociales">
+        </div>
+        <p>¡Entérate de las noticias!</p>
+      </a>
+    </div>
+
+
+    <div class="box-item">
+      <h3>LIBROS</h3>
+      <a href="libros.html">
+        <div class="media">
+          <img src="/home/computer/Desktop/Pprincipitoo/pprincipitoo_web/Web/web-assets/books_box_element.png" alt="Libros">
+        </div>
+        <p>Todas las obras publicadas hasta hoy</p>
+      </a>
+    </div>
+
+    <div class="box-item">
+      <h3>CONTACTO</h3>
+      <a href="contacto.html">
+        <div class="media">
+          <img src="/home/computer/Desktop/Pprincipitoo/pprincipitoo_web/Web/web-assets/contact_box_element.png" alt="Contacto">
+        </div>
+        <p>¿Tienes algo que contarme? ¡Escríbeme!</p>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="inner">
+    <div>
+      © 2025 ARTIST'S NAME —
+      <a href="#">Aviso Legal</a> |
+      <a href="#">Política de Privacidad</a> |
+      <a href="#">Política de Cookies</a> |
+      <a href="#">Configurar Cookies</a>
+    </div>
+
+    <div class="brand">
+      Visual Gen
+    </div>
+  </div>
+</footer>
+
+
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Inicio</a>
+  <a href="biografía.html">Biografía</a>
+  <a href="noticias.html">Noticias</a>
+  <a href="libros.html">Libros</a>
+  <a href="preguntas.html">Preguntas frecuentes</a>
+  <a href="contacto.html">Contacto</a>
+</div>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('active');
+}
+
+
+const faqItems = document.querySelectorAll(".faq-item");
+
+faqItems.forEach(item => {
+  const btn = item.querySelector(".faq-question");
+
+  btn.addEventListener("click", () => {
+    faqItems.forEach(i => {
+      if (i !== item) {
+        i.classList.remove("active");
+        i.querySelector(".icon").textContent = "+";
+      }
+    });
+
+    item.classList.toggle("active");
+    const icon = item.querySelector(".icon");
+    icon.textContent = item.classList.contains("active") ? "–" : "+";
+  });
+});
+
+ const logo = document.querySelector('.logo');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      logo.classList.add('shrink');
+    } else {
+      logo.classList.remove('shrink');
+    }
+  });
+
+  // SHARE-STRIP
+
+ document.addEventListener("DOMContentLoaded", function () {
+  const url = encodeURIComponent(window.location.href);
+
+  const fb = document.getElementById("share-facebook");
+  const email = document.getElementById("share-email");
+
+  if (fb) {
+    fb.href = "https://www.facebook.com/sharer/sharer.php?u=" + url;
+  }
+
+  if (email) {
+    email.href = `mailto:?subject=Te%20comparto%20esta%20página&body=Te%20comparto%20este%20enlace:%0A${url}`;
+
+  }
+});
+
+
+
+
+  
+
+</script>
+
+</body>
+</html>
