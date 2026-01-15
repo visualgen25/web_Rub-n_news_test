@@ -154,6 +154,53 @@
   }
 }
 
+/* =========================
+   WHOLE NEWS
+========================= */
+   
+.whole-news {
+  background: #fff;
+  padding: 60px 15px;
+}
+
+.whole-news .inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 40px;
+}
+
+.whole-news-title {
+  font-size: 32px;
+  color: var(--green);
+  margin: 10px 0 25px;
+}
+
+.whole-news-media {
+  margin: 25px 0;
+}
+
+.whole-news-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.whole-news-body p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+/* MOBILE */
+@media (max-width: 770px) {
+  .whole-news .inner {
+    grid-template-columns: 1fr;
+  }
+}
+   
+
 </style>
 </head>
 
@@ -284,16 +331,57 @@
   </svg></a> -->
 
 </div>
-
-
-
-    </div>
-
-
-    </div>
-
+ </div>
+ </div>
   </div>
 </div>
+
+
+<!-- WHOLE NEWS (SINGLE ARTICLE VIEW) -->
+<section class="whole-news" id="whole-news" hidden>
+  <div class="inner">
+
+    <!-- LEFT: ARTICLE -->
+    <article class="whole-news-content">
+
+      <span class="news-date">2 Octobris 2025</span>
+
+      <h1 class="whole-news-title">
+        Machinae generativae nunc adsunt!
+      </h1>
+
+      <figure class="whole-news-media">
+        <img src="news_full_placeholder.jpg" alt="Imagen principal de la noticia">
+      </figure>
+
+      <div class="whole-news-body">
+        <p>
+          Hodie annuntiatur progressus novorum modorum artificialium. Systemata
+          generativa iam in vita cotidiana adhibentur…
+        </p>
+
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
+          officiis, eveniet reiciendis, dignissimos rerum…
+        </p>
+
+        <p>
+          Haec mutatio novam aetatem cognitionis aperit.
+        </p>
+      </div>
+
+    </article>
+
+    <!-- RIGHT: SAME SIDEBAR -->
+    <aside class="news-sidebar">
+      <!-- reuse EXACT same sidebar markup -->
+    </aside>
+
+  </div>
+</section>
+
+   
+   
 <!-- NEWS SECTION -->
 <section class="news-section" id="news-app">
   <div class="inner">
