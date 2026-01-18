@@ -95,7 +95,7 @@ body {
 .header-main {
   background: var(--green);
   height: 97.984px;
-  background-image: url("/home/computer/Desktop/Pprincipitoo/pprincipitoo_web/resources_web_raw/Images/Under-Nav element Art/nav-bar_element_art.png");
+  background-image: url("/web-assets/Under-Nav element Art/nav-bar_element_art.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover; /* fills entire 1024×162 area */
@@ -222,7 +222,7 @@ body {
 .under-nav {
   height: 161.797px;
   background-color: var(--green);
-  background-image: url("/home/computer/Desktop/Pprincipitoo/pprincipitoo_web/resources_web_raw/Images/Under-Nav element Art/uner-nav_element_art.png");
+  background-image: url("/web-assets/Under-Nav element Art/uner-nav_element_art.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover; /* fills entire 1024×162 area */
