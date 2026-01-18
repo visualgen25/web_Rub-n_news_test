@@ -95,7 +95,7 @@ body {
 .header-main {
   background: var(--green);
   height: 97.984px;
-  background-image: url("/web-assets/web_backgrounds/nav-bar_element_art.png");
+  background-image: url("web-assets/web_backgrounds/nav-bar_element_art.pngweb-assets/web_backgrounds/nav-bar_element_art.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover; /* fills entire 1024×162 area */
