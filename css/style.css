@@ -222,7 +222,7 @@ body {
 .under-nav {
   height: 161.797px;
   background-color: var(--green);
-  background-image: url("web-assets/web_backgrounds/nav-bar_element_art.png");
+  background-image: url("web-assets/web_backgrounds/under-nav_element_art.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover; /* fills entire 1024×162 area */
